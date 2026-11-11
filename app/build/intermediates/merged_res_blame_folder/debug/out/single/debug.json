@@ -1,0 +1,126 @@
+[
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_activity_main.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_bg_badge_green.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/bg_badge_green.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_activity_add_edit_problem.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/activity_add_edit_problem.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_fragment_analytics.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_analytics.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_bg_badge_red.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/bg_badge_red.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_bg_badge_orange.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/bg_badge_orange.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/menu_menu_problem_detail.xml.flat",
+        "source": "com.codeinsight.app-main-42:/menu/menu_problem_detail.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_item_topic_diagnostic.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/item_topic_diagnostic.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_fragment_dashboard.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.codeinsight.app-main-42:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_item_recommendation.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/item_recommendation.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_ic_nav_problems.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/ic_nav_problems.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_item_attempt.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/item_attempt.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_fragment_settings.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_activity_mistake_logger.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/activity_mistake_logger.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.codeinsight.app-main-42:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_ic_nav_analytics.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/ic_nav_analytics.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_activity_leetcode_sync.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/activity_leetcode_sync.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/menu_menu_bottom_nav.xml.flat",
+        "source": "com.codeinsight.app-main-42:/menu/menu_bottom_nav.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_fragment_problems.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_problems.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_bg_badge_teal.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/bg_badge_teal.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_ic_nav_settings.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/ic_nav_settings.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_fragment_recommendations.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_recommendations.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_ic_nav_insights.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/ic_nav_insights.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_activity_problem_detail.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/activity_problem_detail.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_item_problem.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/item_problem.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_item_sync_history.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/item_sync_history.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/layout_item_mistake.xml.flat",
+        "source": "com.codeinsight.app-main-42:/layout/item_mistake.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-merged_res-40:/drawable_ic_nav_dashboard.xml.flat",
+        "source": "com.codeinsight.app-main-42:/drawable/ic_nav_dashboard.xml"
+    }
+]

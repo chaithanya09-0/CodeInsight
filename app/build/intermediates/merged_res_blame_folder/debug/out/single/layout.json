@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/item_recommendation.xml",
+        "source": "com.codeinsight.app-main-42:/layout/item_recommendation.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/fragment_analytics.xml",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_analytics.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/item_topic_diagnostic.xml",
+        "source": "com.codeinsight.app-main-42:/layout/item_topic_diagnostic.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/fragment_settings.xml",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/fragment_dashboard.xml",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/item_mistake.xml",
+        "source": "com.codeinsight.app-main-42:/layout/item_mistake.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/activity_problem_detail.xml",
+        "source": "com.codeinsight.app-main-42:/layout/activity_problem_detail.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/activity_main.xml",
+        "source": "com.codeinsight.app-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/item_attempt.xml",
+        "source": "com.codeinsight.app-main-42:/layout/item_attempt.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/item_problem.xml",
+        "source": "com.codeinsight.app-main-42:/layout/item_problem.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/activity_leetcode_sync.xml",
+        "source": "com.codeinsight.app-main-42:/layout/activity_leetcode_sync.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/activity_mistake_logger.xml",
+        "source": "com.codeinsight.app-main-42:/layout/activity_mistake_logger.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/item_sync_history.xml",
+        "source": "com.codeinsight.app-main-42:/layout/item_sync_history.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/fragment_recommendations.xml",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_recommendations.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/activity_add_edit_problem.xml",
+        "source": "com.codeinsight.app-main-42:/layout/activity_add_edit_problem.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-39:/layout/fragment_problems.xml",
+        "source": "com.codeinsight.app-main-42:/layout/fragment_problems.xml"
+    }
+]

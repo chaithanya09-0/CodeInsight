@@ -1,0 +1,162 @@
+[
+    {
+        "merged": "com.codeinsight.app-debug-39:/layout_fragment_analytics.xml.flat",
+        "source": "com.codeinsight.app-main-41:/layout/fragment_analytics.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_fragment_analytics.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_analytics.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_attempt.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_attempt.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_fragment_problems.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_problems.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_edit.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_bg_badge_orange.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\bg_badge_orange.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_nav_dashboard.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_nav_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_bg_badge_indigo.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\bg_badge_indigo.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_problem.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_problem.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_fragment_recommendations.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_recommendations.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_delete.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_delete.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_topic_diagnostic.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_topic_diagnostic.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\menu_menu_problem_detail.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\menu\\menu_problem_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_connected_profile.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_connected_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_fragment_dashboard.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_mistake_card.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_mistake_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_sync_history.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_sync_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_recommendation.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_recommendation.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_item_mistake.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_mistake.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_nav_settings.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_nav_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_nav_mistakes.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_nav_mistakes.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_fragment_mistakes.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_mistakes.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_nav_insights.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_nav_insights.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_activity_problem_detail.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_problem_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\menu_menu_bottom_nav.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\menu\\menu_bottom_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_activity_leetcode_sync.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_leetcode_sync.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_bg_badge_green.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\bg_badge_green.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_activity_mistake_logger.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_mistake_logger.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_bg_badge_red.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\bg_badge_red.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_bg_badge_sky.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\bg_badge_sky.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_nav_problems.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_nav_problems.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_bg_badge_teal.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\bg_badge_teal.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_fragment_settings.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_nav_analytics.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_nav_analytics.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\layout_activity_add_edit_problem.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_add_edit_problem.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-debug-39:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\drawable\\ic_launcher_background.xml"
+    }
+]

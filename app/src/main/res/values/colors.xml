@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Modern Indigo & Violet developer palette -->
+    <color name="primary">#6366F1</color>
+    <color name="primary_variant">#4F46E5</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#1E1B4B</color>
+    <color name="on_primary_container">#C7D2FE</color>
+
+    <color name="secondary">#38BDF8</color>
+    <color name="secondary_variant">#0284C7</color>
+    <color name="on_secondary">#082F49</color>
+
+    <!-- Semantic difficulty colors -->
+    <color name="easy_green">#22C55E</color>
+    <color name="medium_orange">#F59E0B</color>
+    <color name="hard_red">#EF4444</color>
+
+    <!-- Platform brand colors -->
+    <color name="leetcode_orange">#FFA116</color>
+    <color name="codechef_brown">#8D6E63</color>
+    <color name="hackerrank_green">#2EC866</color>
+    <color name="codeforces_blue">#3B82F6</color>
+    <color name="other_gray">#64748B</color>
+
+    <!-- Deep Charcoal dark theme colors -->
+    <color name="dark_background">#121316</color>
+    <color name="dark_surface">#1A1D24</color>
+    <color name="dark_surface_high">#232732</color>
+    <color name="dark_surface_highest">#2A2F3D</color>
+    <color name="dark_on_surface">#F1F5F9</color>
+    <color name="dark_on_surface_variant">#94A3B8</color>
+    <color name="dark_outline">#2D3240</color>
+
+    <!-- Light theme colors -->
+    <color name="light_background">#F8FAFC</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_surface_high">#F1F5F9</color>
+    <color name="light_surface_highest">#E2E8F0</color>
+    <color name="light_on_surface">#0F172A</color>
+    <color name="light_on_surface_variant">#64748B</color>
+    <color name="light_outline">#CBD5E1</color>
+
+    <!-- Common -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="error">#EF4444</color>
+    <color name="card_border">#2D3240</color>
+</resources>
+

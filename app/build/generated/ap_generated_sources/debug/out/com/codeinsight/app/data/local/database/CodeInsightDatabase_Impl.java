@@ -1,0 +1,498 @@
+package com.codeinsight.app.data.local.database;
+
+import androidx.annotation.NonNull;
+import androidx.room.DatabaseConfiguration;
+import androidx.room.InvalidationTracker;
+import androidx.room.RoomDatabase;
+import androidx.room.RoomOpenHelper;
+import androidx.room.migration.AutoMigrationSpec;
+import androidx.room.migration.Migration;
+import androidx.room.util.DBUtil;
+import androidx.room.util.TableInfo;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
+import com.codeinsight.app.data.local.dao.AttemptDao;
+import com.codeinsight.app.data.local.dao.AttemptDao_Impl;
+import com.codeinsight.app.data.local.dao.MistakeDao;
+import com.codeinsight.app.data.local.dao.MistakeDao_Impl;
+import com.codeinsight.app.data.local.dao.PlatformConnectionDao;
+import com.codeinsight.app.data.local.dao.PlatformConnectionDao_Impl;
+import com.codeinsight.app.data.local.dao.ProblemDao;
+import com.codeinsight.app.data.local.dao.ProblemDao_Impl;
+import com.codeinsight.app.data.local.dao.RecommendationDao;
+import com.codeinsight.app.data.local.dao.RecommendationDao_Impl;
+import com.codeinsight.app.data.local.dao.SyncHistoryDao;
+import com.codeinsight.app.data.local.dao.SyncHistoryDao_Impl;
+import com.codeinsight.app.data.local.dao.TopicDao;
+import com.codeinsight.app.data.local.dao.TopicDao_Impl;
+import java.lang.Class;
+import java.lang.Override;
+import java.lang.String;
+import java.lang.SuppressWarnings;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.processing.Generated;
+
+@Generated("androidx.room.RoomProcessor")
+@SuppressWarnings({"unchecked", "deprecation"})
+public final class CodeInsightDatabase_Impl extends CodeInsightDatabase {
+  private volatile ProblemDao _problemDao;
+
+  private volatile AttemptDao _attemptDao;
+
+  private volatile MistakeDao _mistakeDao;
+
+  private volatile TopicDao _topicDao;
+
+  private volatile RecommendationDao _recommendationDao;
+
+  private volatile PlatformConnectionDao _platformConnectionDao;
+
+  private volatile SyncHistoryDao _syncHistoryDao;
+
+  @Override
+  @NonNull
+  protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(5) {
+      @Override
+      public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS `coding_problems` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT, `url` TEXT, `platform` TEXT, `difficulty` TEXT, `status` TEXT, `totalAttempts` INTEGER NOT NULL, `notes` TEXT, `externalId` TEXT, `accountUsername` TEXT NOT NULL DEFAULT '', `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_coding_problems_platform` ON `coding_problems` (`platform`)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_coding_problems_difficulty` ON `coding_problems` (`difficulty`)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_coding_problems_status` ON `coding_problems` (`status`)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_coding_problems_accountUsername` ON `coding_problems` (`accountUsername`)");
+        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_coding_problems_externalId` ON `coding_problems` (`externalId`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `coding_attempts` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `problemId` INTEGER NOT NULL, `accepted` INTEGER NOT NULL, `durationMinutes` INTEGER, `language` TEXT, `notes` TEXT, `attemptedAt` INTEGER NOT NULL, FOREIGN KEY(`problemId`) REFERENCES `coding_problems`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_coding_attempts_problemId` ON `coding_attempts` (`problemId`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `mistakes` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `attemptId` INTEGER NOT NULL, `problemId` INTEGER NOT NULL, `category` TEXT, `description` TEXT, `notes` TEXT, `createdAt` INTEGER NOT NULL, FOREIGN KEY(`attemptId`) REFERENCES `coding_attempts`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`problemId`) REFERENCES `coding_problems`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_mistakes_attemptId` ON `mistakes` (`attemptId`)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_mistakes_problemId` ON `mistakes` (`problemId`)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_mistakes_category` ON `mistakes` (`category`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `topics` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `category` TEXT)");
+        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_topics_name` ON `topics` (`name`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `problem_topic_cross_ref` (`problemId` INTEGER NOT NULL, `topicId` INTEGER NOT NULL, PRIMARY KEY(`problemId`, `topicId`), FOREIGN KEY(`problemId`) REFERENCES `coding_problems`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`topicId`) REFERENCES `topics`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_problem_topic_cross_ref_topicId` ON `problem_topic_cross_ref` (`topicId`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `recommendations` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `topicName` TEXT, `type` TEXT, `title` TEXT, `description` TEXT, `reasoning` TEXT, `priority` INTEGER NOT NULL, `dismissed` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL)");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_recommendations_topicName` ON `recommendations` (`topicName`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `platform_connections` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `platform` TEXT, `username` TEXT, `isConnected` INTEGER NOT NULL, `isActive` INTEGER NOT NULL, `lastSyncAt` INTEGER, `totalSolved` INTEGER NOT NULL, `easySolved` INTEGER NOT NULL, `mediumSolved` INTEGER NOT NULL, `hardSolved` INTEGER NOT NULL, `ranking` INTEGER NOT NULL, `tagCountsJson` TEXT, `totalSubmissions` INTEGER NOT NULL DEFAULT 0, `submissionCalendarJson` TEXT NOT NULL DEFAULT '{}')");
+        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_platform_connections_platform_username` ON `platform_connections` (`platform`, `username`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `sync_history` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `connectionId` INTEGER NOT NULL, `status` TEXT, `itemsSynced` INTEGER NOT NULL, `errorMessage` TEXT, `syncedAt` INTEGER NOT NULL, FOREIGN KEY(`connectionId`) REFERENCES `platform_connections`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )");
+        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_history_connectionId` ON `sync_history` (`connectionId`)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `study_sessions` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `startTime` INTEGER NOT NULL, `endTime` INTEGER, `problemsSolved` INTEGER NOT NULL, `notes` TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a25d58d04d3ec76a40d0ec428920846e')");
+      }
+
+      @Override
+      public void dropAllTables(@NonNull final SupportSQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS `coding_problems`");
+        db.execSQL("DROP TABLE IF EXISTS `coding_attempts`");
+        db.execSQL("DROP TABLE IF EXISTS `mistakes`");
+        db.execSQL("DROP TABLE IF EXISTS `topics`");
+        db.execSQL("DROP TABLE IF EXISTS `problem_topic_cross_ref`");
+        db.execSQL("DROP TABLE IF EXISTS `recommendations`");
+        db.execSQL("DROP TABLE IF EXISTS `platform_connections`");
+        db.execSQL("DROP TABLE IF EXISTS `sync_history`");
+        db.execSQL("DROP TABLE IF EXISTS `study_sessions`");
+        final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
+        if (_callbacks != null) {
+          for (RoomDatabase.Callback _callback : _callbacks) {
+            _callback.onDestructiveMigration(db);
+          }
+        }
+      }
+
+      @Override
+      public void onCreate(@NonNull final SupportSQLiteDatabase db) {
+        final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
+        if (_callbacks != null) {
+          for (RoomDatabase.Callback _callback : _callbacks) {
+            _callback.onCreate(db);
+          }
+        }
+      }
+
+      @Override
+      public void onOpen(@NonNull final SupportSQLiteDatabase db) {
+        mDatabase = db;
+        db.execSQL("PRAGMA foreign_keys = ON");
+        internalInitInvalidationTracker(db);
+        final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
+        if (_callbacks != null) {
+          for (RoomDatabase.Callback _callback : _callbacks) {
+            _callback.onOpen(db);
+          }
+        }
+      }
+
+      @Override
+      public void onPreMigrate(@NonNull final SupportSQLiteDatabase db) {
+        DBUtil.dropFtsSyncTriggers(db);
+      }
+
+      @Override
+      public void onPostMigrate(@NonNull final SupportSQLiteDatabase db) {
+      }
+
+      @Override
+      @NonNull
+      public RoomOpenHelper.ValidationResult onValidateSchema(
+          @NonNull final SupportSQLiteDatabase db) {
+        final HashMap<String, TableInfo.Column> _columnsCodingProblems = new HashMap<String, TableInfo.Column>(12);
+        _columnsCodingProblems.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("title", new TableInfo.Column("title", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("url", new TableInfo.Column("url", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("platform", new TableInfo.Column("platform", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("difficulty", new TableInfo.Column("difficulty", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("status", new TableInfo.Column("status", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("totalAttempts", new TableInfo.Column("totalAttempts", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("notes", new TableInfo.Column("notes", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("externalId", new TableInfo.Column("externalId", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("accountUsername", new TableInfo.Column("accountUsername", "TEXT", true, 0, "''", TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingProblems.put("updatedAt", new TableInfo.Column("updatedAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysCodingProblems = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesCodingProblems = new HashSet<TableInfo.Index>(5);
+        _indicesCodingProblems.add(new TableInfo.Index("index_coding_problems_platform", false, Arrays.asList("platform"), Arrays.asList("ASC")));
+        _indicesCodingProblems.add(new TableInfo.Index("index_coding_problems_difficulty", false, Arrays.asList("difficulty"), Arrays.asList("ASC")));
+        _indicesCodingProblems.add(new TableInfo.Index("index_coding_problems_status", false, Arrays.asList("status"), Arrays.asList("ASC")));
+        _indicesCodingProblems.add(new TableInfo.Index("index_coding_problems_accountUsername", false, Arrays.asList("accountUsername"), Arrays.asList("ASC")));
+        _indicesCodingProblems.add(new TableInfo.Index("index_coding_problems_externalId", true, Arrays.asList("externalId"), Arrays.asList("ASC")));
+        final TableInfo _infoCodingProblems = new TableInfo("coding_problems", _columnsCodingProblems, _foreignKeysCodingProblems, _indicesCodingProblems);
+        final TableInfo _existingCodingProblems = TableInfo.read(db, "coding_problems");
+        if (!_infoCodingProblems.equals(_existingCodingProblems)) {
+          return new RoomOpenHelper.ValidationResult(false, "coding_problems(com.codeinsight.app.data.local.entity.CodingProblem).\n"
+                  + " Expected:\n" + _infoCodingProblems + "\n"
+                  + " Found:\n" + _existingCodingProblems);
+        }
+        final HashMap<String, TableInfo.Column> _columnsCodingAttempts = new HashMap<String, TableInfo.Column>(7);
+        _columnsCodingAttempts.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingAttempts.put("problemId", new TableInfo.Column("problemId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingAttempts.put("accepted", new TableInfo.Column("accepted", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingAttempts.put("durationMinutes", new TableInfo.Column("durationMinutes", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingAttempts.put("language", new TableInfo.Column("language", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingAttempts.put("notes", new TableInfo.Column("notes", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCodingAttempts.put("attemptedAt", new TableInfo.Column("attemptedAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysCodingAttempts = new HashSet<TableInfo.ForeignKey>(1);
+        _foreignKeysCodingAttempts.add(new TableInfo.ForeignKey("coding_problems", "CASCADE", "NO ACTION", Arrays.asList("problemId"), Arrays.asList("id")));
+        final HashSet<TableInfo.Index> _indicesCodingAttempts = new HashSet<TableInfo.Index>(1);
+        _indicesCodingAttempts.add(new TableInfo.Index("index_coding_attempts_problemId", false, Arrays.asList("problemId"), Arrays.asList("ASC")));
+        final TableInfo _infoCodingAttempts = new TableInfo("coding_attempts", _columnsCodingAttempts, _foreignKeysCodingAttempts, _indicesCodingAttempts);
+        final TableInfo _existingCodingAttempts = TableInfo.read(db, "coding_attempts");
+        if (!_infoCodingAttempts.equals(_existingCodingAttempts)) {
+          return new RoomOpenHelper.ValidationResult(false, "coding_attempts(com.codeinsight.app.data.local.entity.CodingAttempt).\n"
+                  + " Expected:\n" + _infoCodingAttempts + "\n"
+                  + " Found:\n" + _existingCodingAttempts);
+        }
+        final HashMap<String, TableInfo.Column> _columnsMistakes = new HashMap<String, TableInfo.Column>(7);
+        _columnsMistakes.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsMistakes.put("attemptId", new TableInfo.Column("attemptId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsMistakes.put("problemId", new TableInfo.Column("problemId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsMistakes.put("category", new TableInfo.Column("category", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsMistakes.put("description", new TableInfo.Column("description", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsMistakes.put("notes", new TableInfo.Column("notes", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsMistakes.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysMistakes = new HashSet<TableInfo.ForeignKey>(2);
+        _foreignKeysMistakes.add(new TableInfo.ForeignKey("coding_attempts", "CASCADE", "NO ACTION", Arrays.asList("attemptId"), Arrays.asList("id")));
+        _foreignKeysMistakes.add(new TableInfo.ForeignKey("coding_problems", "CASCADE", "NO ACTION", Arrays.asList("problemId"), Arrays.asList("id")));
+        final HashSet<TableInfo.Index> _indicesMistakes = new HashSet<TableInfo.Index>(3);
+        _indicesMistakes.add(new TableInfo.Index("index_mistakes_attemptId", false, Arrays.asList("attemptId"), Arrays.asList("ASC")));
+        _indicesMistakes.add(new TableInfo.Index("index_mistakes_problemId", false, Arrays.asList("problemId"), Arrays.asList("ASC")));
+        _indicesMistakes.add(new TableInfo.Index("index_mistakes_category", false, Arrays.asList("category"), Arrays.asList("ASC")));
+        final TableInfo _infoMistakes = new TableInfo("mistakes", _columnsMistakes, _foreignKeysMistakes, _indicesMistakes);
+        final TableInfo _existingMistakes = TableInfo.read(db, "mistakes");
+        if (!_infoMistakes.equals(_existingMistakes)) {
+          return new RoomOpenHelper.ValidationResult(false, "mistakes(com.codeinsight.app.data.local.entity.Mistake).\n"
+                  + " Expected:\n" + _infoMistakes + "\n"
+                  + " Found:\n" + _existingMistakes);
+        }
+        final HashMap<String, TableInfo.Column> _columnsTopics = new HashMap<String, TableInfo.Column>(3);
+        _columnsTopics.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTopics.put("name", new TableInfo.Column("name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTopics.put("category", new TableInfo.Column("category", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysTopics = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesTopics = new HashSet<TableInfo.Index>(1);
+        _indicesTopics.add(new TableInfo.Index("index_topics_name", true, Arrays.asList("name"), Arrays.asList("ASC")));
+        final TableInfo _infoTopics = new TableInfo("topics", _columnsTopics, _foreignKeysTopics, _indicesTopics);
+        final TableInfo _existingTopics = TableInfo.read(db, "topics");
+        if (!_infoTopics.equals(_existingTopics)) {
+          return new RoomOpenHelper.ValidationResult(false, "topics(com.codeinsight.app.data.local.entity.Topic).\n"
+                  + " Expected:\n" + _infoTopics + "\n"
+                  + " Found:\n" + _existingTopics);
+        }
+        final HashMap<String, TableInfo.Column> _columnsProblemTopicCrossRef = new HashMap<String, TableInfo.Column>(2);
+        _columnsProblemTopicCrossRef.put("problemId", new TableInfo.Column("problemId", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsProblemTopicCrossRef.put("topicId", new TableInfo.Column("topicId", "INTEGER", true, 2, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysProblemTopicCrossRef = new HashSet<TableInfo.ForeignKey>(2);
+        _foreignKeysProblemTopicCrossRef.add(new TableInfo.ForeignKey("coding_problems", "CASCADE", "NO ACTION", Arrays.asList("problemId"), Arrays.asList("id")));
+        _foreignKeysProblemTopicCrossRef.add(new TableInfo.ForeignKey("topics", "CASCADE", "NO ACTION", Arrays.asList("topicId"), Arrays.asList("id")));
+        final HashSet<TableInfo.Index> _indicesProblemTopicCrossRef = new HashSet<TableInfo.Index>(1);
+        _indicesProblemTopicCrossRef.add(new TableInfo.Index("index_problem_topic_cross_ref_topicId", false, Arrays.asList("topicId"), Arrays.asList("ASC")));
+        final TableInfo _infoProblemTopicCrossRef = new TableInfo("problem_topic_cross_ref", _columnsProblemTopicCrossRef, _foreignKeysProblemTopicCrossRef, _indicesProblemTopicCrossRef);
+        final TableInfo _existingProblemTopicCrossRef = TableInfo.read(db, "problem_topic_cross_ref");
+        if (!_infoProblemTopicCrossRef.equals(_existingProblemTopicCrossRef)) {
+          return new RoomOpenHelper.ValidationResult(false, "problem_topic_cross_ref(com.codeinsight.app.data.local.entity.ProblemTopicCrossRef).\n"
+                  + " Expected:\n" + _infoProblemTopicCrossRef + "\n"
+                  + " Found:\n" + _existingProblemTopicCrossRef);
+        }
+        final HashMap<String, TableInfo.Column> _columnsRecommendations = new HashMap<String, TableInfo.Column>(9);
+        _columnsRecommendations.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("topicName", new TableInfo.Column("topicName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("type", new TableInfo.Column("type", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("title", new TableInfo.Column("title", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("description", new TableInfo.Column("description", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("reasoning", new TableInfo.Column("reasoning", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("priority", new TableInfo.Column("priority", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("dismissed", new TableInfo.Column("dismissed", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRecommendations.put("createdAt", new TableInfo.Column("createdAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysRecommendations = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesRecommendations = new HashSet<TableInfo.Index>(1);
+        _indicesRecommendations.add(new TableInfo.Index("index_recommendations_topicName", false, Arrays.asList("topicName"), Arrays.asList("ASC")));
+        final TableInfo _infoRecommendations = new TableInfo("recommendations", _columnsRecommendations, _foreignKeysRecommendations, _indicesRecommendations);
+        final TableInfo _existingRecommendations = TableInfo.read(db, "recommendations");
+        if (!_infoRecommendations.equals(_existingRecommendations)) {
+          return new RoomOpenHelper.ValidationResult(false, "recommendations(com.codeinsight.app.data.local.entity.Recommendation).\n"
+                  + " Expected:\n" + _infoRecommendations + "\n"
+                  + " Found:\n" + _existingRecommendations);
+        }
+        final HashMap<String, TableInfo.Column> _columnsPlatformConnections = new HashMap<String, TableInfo.Column>(14);
+        _columnsPlatformConnections.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("platform", new TableInfo.Column("platform", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("username", new TableInfo.Column("username", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("isConnected", new TableInfo.Column("isConnected", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("isActive", new TableInfo.Column("isActive", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("lastSyncAt", new TableInfo.Column("lastSyncAt", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("totalSolved", new TableInfo.Column("totalSolved", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("easySolved", new TableInfo.Column("easySolved", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("mediumSolved", new TableInfo.Column("mediumSolved", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("hardSolved", new TableInfo.Column("hardSolved", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("ranking", new TableInfo.Column("ranking", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("tagCountsJson", new TableInfo.Column("tagCountsJson", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("totalSubmissions", new TableInfo.Column("totalSubmissions", "INTEGER", true, 0, "0", TableInfo.CREATED_FROM_ENTITY));
+        _columnsPlatformConnections.put("submissionCalendarJson", new TableInfo.Column("submissionCalendarJson", "TEXT", true, 0, "'{}'", TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysPlatformConnections = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesPlatformConnections = new HashSet<TableInfo.Index>(1);
+        _indicesPlatformConnections.add(new TableInfo.Index("index_platform_connections_platform_username", true, Arrays.asList("platform", "username"), Arrays.asList("ASC", "ASC")));
+        final TableInfo _infoPlatformConnections = new TableInfo("platform_connections", _columnsPlatformConnections, _foreignKeysPlatformConnections, _indicesPlatformConnections);
+        final TableInfo _existingPlatformConnections = TableInfo.read(db, "platform_connections");
+        if (!_infoPlatformConnections.equals(_existingPlatformConnections)) {
+          return new RoomOpenHelper.ValidationResult(false, "platform_connections(com.codeinsight.app.data.local.entity.PlatformConnection).\n"
+                  + " Expected:\n" + _infoPlatformConnections + "\n"
+                  + " Found:\n" + _existingPlatformConnections);
+        }
+        final HashMap<String, TableInfo.Column> _columnsSyncHistory = new HashMap<String, TableInfo.Column>(6);
+        _columnsSyncHistory.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSyncHistory.put("connectionId", new TableInfo.Column("connectionId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSyncHistory.put("status", new TableInfo.Column("status", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSyncHistory.put("itemsSynced", new TableInfo.Column("itemsSynced", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSyncHistory.put("errorMessage", new TableInfo.Column("errorMessage", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSyncHistory.put("syncedAt", new TableInfo.Column("syncedAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysSyncHistory = new HashSet<TableInfo.ForeignKey>(1);
+        _foreignKeysSyncHistory.add(new TableInfo.ForeignKey("platform_connections", "CASCADE", "NO ACTION", Arrays.asList("connectionId"), Arrays.asList("id")));
+        final HashSet<TableInfo.Index> _indicesSyncHistory = new HashSet<TableInfo.Index>(1);
+        _indicesSyncHistory.add(new TableInfo.Index("index_sync_history_connectionId", false, Arrays.asList("connectionId"), Arrays.asList("ASC")));
+        final TableInfo _infoSyncHistory = new TableInfo("sync_history", _columnsSyncHistory, _foreignKeysSyncHistory, _indicesSyncHistory);
+        final TableInfo _existingSyncHistory = TableInfo.read(db, "sync_history");
+        if (!_infoSyncHistory.equals(_existingSyncHistory)) {
+          return new RoomOpenHelper.ValidationResult(false, "sync_history(com.codeinsight.app.data.local.entity.SyncHistory).\n"
+                  + " Expected:\n" + _infoSyncHistory + "\n"
+                  + " Found:\n" + _existingSyncHistory);
+        }
+        final HashMap<String, TableInfo.Column> _columnsStudySessions = new HashMap<String, TableInfo.Column>(5);
+        _columnsStudySessions.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsStudySessions.put("startTime", new TableInfo.Column("startTime", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsStudySessions.put("endTime", new TableInfo.Column("endTime", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsStudySessions.put("problemsSolved", new TableInfo.Column("problemsSolved", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsStudySessions.put("notes", new TableInfo.Column("notes", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysStudySessions = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesStudySessions = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoStudySessions = new TableInfo("study_sessions", _columnsStudySessions, _foreignKeysStudySessions, _indicesStudySessions);
+        final TableInfo _existingStudySessions = TableInfo.read(db, "study_sessions");
+        if (!_infoStudySessions.equals(_existingStudySessions)) {
+          return new RoomOpenHelper.ValidationResult(false, "study_sessions(com.codeinsight.app.data.local.entity.StudySession).\n"
+                  + " Expected:\n" + _infoStudySessions + "\n"
+                  + " Found:\n" + _existingStudySessions);
+        }
+        return new RoomOpenHelper.ValidationResult(true, null);
+      }
+    }, "a25d58d04d3ec76a40d0ec428920846e", "9d0c51d50f6cd829473725ba5c78a0b8");
+    final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
+    final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
+    return _helper;
+  }
+
+  @Override
+  @NonNull
+  protected InvalidationTracker createInvalidationTracker() {
+    final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
+    final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "coding_problems","coding_attempts","mistakes","topics","problem_topic_cross_ref","recommendations","platform_connections","sync_history","study_sessions");
+  }
+
+  @Override
+  public void clearAllTables() {
+    super.assertNotMainThread();
+    final SupportSQLiteDatabase _db = super.getOpenHelper().getWritableDatabase();
+    final boolean _supportsDeferForeignKeys = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
+    try {
+      if (!_supportsDeferForeignKeys) {
+        _db.execSQL("PRAGMA foreign_keys = FALSE");
+      }
+      super.beginTransaction();
+      if (_supportsDeferForeignKeys) {
+        _db.execSQL("PRAGMA defer_foreign_keys = TRUE");
+      }
+      _db.execSQL("DELETE FROM `coding_problems`");
+      _db.execSQL("DELETE FROM `coding_attempts`");
+      _db.execSQL("DELETE FROM `mistakes`");
+      _db.execSQL("DELETE FROM `topics`");
+      _db.execSQL("DELETE FROM `problem_topic_cross_ref`");
+      _db.execSQL("DELETE FROM `recommendations`");
+      _db.execSQL("DELETE FROM `platform_connections`");
+      _db.execSQL("DELETE FROM `sync_history`");
+      _db.execSQL("DELETE FROM `study_sessions`");
+      super.setTransactionSuccessful();
+    } finally {
+      super.endTransaction();
+      if (!_supportsDeferForeignKeys) {
+        _db.execSQL("PRAGMA foreign_keys = TRUE");
+      }
+      _db.query("PRAGMA wal_checkpoint(FULL)").close();
+      if (!_db.inTransaction()) {
+        _db.execSQL("VACUUM");
+      }
+    }
+  }
+
+  @Override
+  @NonNull
+  protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
+    final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
+    _typeConvertersMap.put(ProblemDao.class, ProblemDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(AttemptDao.class, AttemptDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(MistakeDao.class, MistakeDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(TopicDao.class, TopicDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(RecommendationDao.class, RecommendationDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(PlatformConnectionDao.class, PlatformConnectionDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(SyncHistoryDao.class, SyncHistoryDao_Impl.getRequiredConverters());
+    return _typeConvertersMap;
+  }
+
+  @Override
+  @NonNull
+  public Set<Class<? extends AutoMigrationSpec>> getRequiredAutoMigrationSpecs() {
+    final HashSet<Class<? extends AutoMigrationSpec>> _autoMigrationSpecsSet = new HashSet<Class<? extends AutoMigrationSpec>>();
+    return _autoMigrationSpecsSet;
+  }
+
+  @Override
+  @NonNull
+  public List<Migration> getAutoMigrations(
+      @NonNull final Map<Class<? extends AutoMigrationSpec>, AutoMigrationSpec> autoMigrationSpecs) {
+    final List<Migration> _autoMigrations = new ArrayList<Migration>();
+    return _autoMigrations;
+  }
+
+  @Override
+  public ProblemDao problemDao() {
+    if (_problemDao != null) {
+      return _problemDao;
+    } else {
+      synchronized(this) {
+        if(_problemDao == null) {
+          _problemDao = new ProblemDao_Impl(this);
+        }
+        return _problemDao;
+      }
+    }
+  }
+
+  @Override
+  public AttemptDao attemptDao() {
+    if (_attemptDao != null) {
+      return _attemptDao;
+    } else {
+      synchronized(this) {
+        if(_attemptDao == null) {
+          _attemptDao = new AttemptDao_Impl(this);
+        }
+        return _attemptDao;
+      }
+    }
+  }
+
+  @Override
+  public MistakeDao mistakeDao() {
+    if (_mistakeDao != null) {
+      return _mistakeDao;
+    } else {
+      synchronized(this) {
+        if(_mistakeDao == null) {
+          _mistakeDao = new MistakeDao_Impl(this);
+        }
+        return _mistakeDao;
+      }
+    }
+  }
+
+  @Override
+  public TopicDao topicDao() {
+    if (_topicDao != null) {
+      return _topicDao;
+    } else {
+      synchronized(this) {
+        if(_topicDao == null) {
+          _topicDao = new TopicDao_Impl(this);
+        }
+        return _topicDao;
+      }
+    }
+  }
+
+  @Override
+  public RecommendationDao recommendationDao() {
+    if (_recommendationDao != null) {
+      return _recommendationDao;
+    } else {
+      synchronized(this) {
+        if(_recommendationDao == null) {
+          _recommendationDao = new RecommendationDao_Impl(this);
+        }
+        return _recommendationDao;
+      }
+    }
+  }
+
+  @Override
+  public PlatformConnectionDao platformConnectionDao() {
+    if (_platformConnectionDao != null) {
+      return _platformConnectionDao;
+    } else {
+      synchronized(this) {
+        if(_platformConnectionDao == null) {
+          _platformConnectionDao = new PlatformConnectionDao_Impl(this);
+        }
+        return _platformConnectionDao;
+      }
+    }
+  }
+
+  @Override
+  public SyncHistoryDao syncHistoryDao() {
+    if (_syncHistoryDao != null) {
+      return _syncHistoryDao;
+    } else {
+      synchronized(this) {
+        if(_syncHistoryDao == null) {
+          _syncHistoryDao = new SyncHistoryDao_Impl(this);
+        }
+        return _syncHistoryDao;
+      }
+    }
+  }
+}

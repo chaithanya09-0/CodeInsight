@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\fragment_recommendations.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_recommendations.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\activity_leetcode_sync.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_leetcode_sync.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_mistake.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_mistake.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_topic_diagnostic.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_topic_diagnostic.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\activity_mistake_logger.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_mistake_logger.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\fragment_dashboard.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\fragment_settings.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\fragment_mistakes.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_mistakes.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_mistake_card.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_mistake_card.xml"
+    },
+    {
+        "merged": "com.codeinsight.app-mergeDebugResources-38:/layout/fragment_analytics.xml",
+        "source": "com.codeinsight.app-main-41:/layout/fragment_analytics.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\activity_problem_detail.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_problem_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\fragment_analytics.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_analytics.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_connected_profile.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_connected_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\activity_add_edit_problem.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\activity_add_edit_problem.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_recommendation.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_recommendation.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_attempt.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_attempt.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_sync_history.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_sync_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\item_problem.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\item_problem.xml"
+    },
+    {
+        "merged": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-mergeDebugResources-38:\\layout\\fragment_problems.xml",
+        "source": "C:\\Users\\chait\\.gradle\\daemon\\9.6.0\\com.codeinsight.app-main-41:\\layout\\fragment_problems.xml"
+    }
+]

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="14dp"
+    app:cardBackgroundColor="@color/dark_surface_high"
+    app:strokeWidth="0dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header: Platform + Difficulty + Status -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_item_platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LeetCode"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/leetcode_orange"
+                android:background="@drawable/bg_badge_orange"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp" />
+
+            <TextView
+                android:id="@+id/tv_item_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/medium_orange"
+                android:background="@drawable/bg_badge_orange"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:layout_marginStart="6dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_item_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Solved"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/easy_green" />
+        </LinearLayout>
+
+        <!-- Problem Title -->
+        <TextView
+            android:id="@+id/tv_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Problem Title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_on_surface"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <!-- Topics Text -->
+        <TextView
+            android:id="@+id/tv_item_topics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Arrays • Hash Table"
+            android:textSize="11sp"
+            android:textColor="@color/primary"
+            android:layout_marginTop="4dp" />
+
+        <!-- Footer: Attempts + Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_item_attempts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 attempts"
+                android:textSize="11sp"
+                android:textColor="@color/dark_on_surface_variant" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nov 7, 2026"
+                android:textSize="11sp"
+                android:textColor="@color/dark_on_surface_variant" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
